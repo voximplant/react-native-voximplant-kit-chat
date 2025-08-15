@@ -7,7 +7,7 @@ customer data, and other features.
 
 Supported languages: English, Spanish, Portuguese, Russian.
 
-<img src="./screenshots/chat_screen_android.png" width=200> <img src="./screenshots/chat_screen_ios.png" width=208>
+<img src="https://github.com/voximplant/react-native-voximplant-kit-chat/blob/main/screenshots/chat_screen_android.png" width=200> <img src="https://github.com/voximplant/react-native-voximplant-kit-chat/blob/main/screenshots/chat_screen_ios.png" width=208>
 
 ## Supported React Native Versions
 

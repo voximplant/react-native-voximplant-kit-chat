@@ -5,7 +5,7 @@
 import { NativeModules, TurboModuleRegistry } from 'react-native';
 import VoximplantKitChat from './NativeVoximplantKitChat';
 
-let turboModule = TurboModuleRegistry ? VoximplantKitChat : null;
-let VoximplantKitChatModule = turboModule ?? NativeModules.VoximplantKitChat;
+const turboModule = TurboModuleRegistry ? VoximplantKitChat : null;
+const VoximplantKitChatModule = turboModule ?? NativeModules.VoximplantKitChat;
 
 export default VoximplantKitChatModule;

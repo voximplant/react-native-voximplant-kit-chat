@@ -4,6 +4,7 @@
 
 package com.voximplantkitchat
 
+import android.graphics.Color
 import android.util.Log
 import androidx.core.graphics.toColorInt
 import com.facebook.react.bridge.Promise
@@ -151,7 +152,9 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
         val onBrandContainerColorString = colorScheme.getString("onBrandContainer") ?: "0xFF311678"
         val positiveColorString = colorScheme.getString("positive") ?: "0xFF5AD677"
         val positiveContainerColorString = colorScheme.getString("positiveContainer") ?: "0xFFEDFBF0"
+        val avatarPlaceholderColorString = colorScheme.getString("avatarPlaceholder") ?: "0xFFABACC0"
 
+        val avatarPlaceholderColor = if (avatarPlaceholderColorString == "transparent") Color.TRANSPARENT else hexToInt(avatarPlaceholderColorString)
         val brandColor = hexToInt(brandColorString)
         val brandContainerColor = hexToInt(brandContainerColorString)
         val negativeColor = hexToInt(negativeColorString)
@@ -162,10 +165,12 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
         val positiveContainerColor = hexToInt(positiveContainerColorString)
 
         if (brandColor != null && brandContainerColor != null && negativeColor != null && negativeContainerColor != null &&
-            onBrandColor != null && onBrandContainerColor != null && positiveColor != null && positiveContainerColor != null) {
+            onBrandColor != null && onBrandContainerColor != null && positiveColor != null && positiveContainerColor != null &&
+            avatarPlaceholderColor != null) {
             val kitColorScheme = KitChatColorScheme(brand = brandColor, brandContainer = brandContainerColor,
                 negative = negativeColor, negativeContainer = negativeContainerColor, onBrand = onBrandColor,
-                onBrandContainer = onBrandContainerColor, positive = positiveColor, positiveContainer = positiveContainerColor)
+                onBrandContainer = onBrandContainerColor, positive = positiveColor, positiveContainer = positiveContainerColor,
+                avatarPlaceholder = avatarPlaceholderColor)
             KitChatUi.colorScheme = kitColorScheme
         } else {
             Log.e(TAG, "VoximplantKitChatModule: customizeColors: failed to parse some color(s)")

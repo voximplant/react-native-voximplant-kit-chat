@@ -38,6 +38,12 @@ export interface KitColorScheme {
    * Color that applies to containers to highlight success states. The default color is 0xFFEDFBF0.
    */
   positiveContainer?: string | null;
+  /**
+   * Color that applies to the avatar placeholder. The default color is 0xFFABACC0.
+   *
+   * When set to "transparent", no color is applied.
+   */
+  avatarPlaceholder?: string | null;
 }
 
 /**

@@ -190,29 +190,44 @@ import VoximplantKitChatUI
   public func customizeColors(colorScheme: Dictionary<String, Any>) {
     var customizableColors = VIKitChatCustomizableColors()
 
-    if let brandColorString = colorScheme["brand"] as? String {
-      customizableColors.brand = convertStringToColor(hex: brandColorString)
+    if let brandColorString = colorScheme["brand"] as? String,
+       let brandColor = convertStringToColor(hex: brandColorString) {
+      customizableColors.brand = brandColor
     }
-    if let brandContainerColorString = colorScheme["brandContainer"] as? String {
-      customizableColors.brandContainer = convertStringToColor(hex: brandContainerColorString)
+    if let brandContainerColorString = colorScheme["brandContainer"] as? String,
+       let brandContainerColor = convertStringToColor(hex: brandContainerColorString) {
+      customizableColors.brandContainer = brandContainerColor
     }
-    if let negativeColorString = colorScheme["negative"] as? String {
-      customizableColors.negative = convertStringToColor(hex: negativeColorString)
+    if let negativeColorString = colorScheme["negative"] as? String,
+       let negativeColor = convertStringToColor(hex: negativeColorString) {
+      customizableColors.negative = negativeColor
     }
-    if let negativeContainerColorString = colorScheme["negativeContainer"] as? String {
-      customizableColors.negativeContainer = convertStringToColor(hex: negativeContainerColorString)
+    if let negativeContainerColorString = colorScheme["negativeContainer"] as? String,
+       let negativeContainerColor = convertStringToColor(hex: negativeContainerColorString) {
+      customizableColors.negativeContainer = negativeContainerColor
     }
-    if let onBrandColorString = colorScheme["onBrand"] as? String {
-      customizableColors.onBrand = convertStringToColor(hex: onBrandColorString)
+    if let onBrandColorString = colorScheme["onBrand"] as? String,
+       let onBrandColor = convertStringToColor(hex: onBrandColorString) {
+      customizableColors.onBrand = onBrandColor
     }
-    if let onBrandContainerColorString = colorScheme["onBrandContainer"] as? String {
-      customizableColors.onBrandContainer = convertStringToColor(hex: onBrandContainerColorString)
+    if let onBrandContainerColorString = colorScheme["onBrandContainer"] as? String,
+       let onBrandContainerColor = convertStringToColor(hex: onBrandContainerColorString) {
+      customizableColors.onBrandContainer = onBrandContainerColor
     }
-    if let positiveColorString = colorScheme["positive"] as? String {
-      customizableColors.positive = convertStringToColor(hex: positiveColorString)
+    if let positiveColorString = colorScheme["positive"] as? String,
+       let positiveColor = convertStringToColor(hex: positiveColorString) {
+      customizableColors.positive = positiveColor
     }
-    if let positiveContainerColorString = colorScheme["positiveContainer"] as? String {
-      customizableColors.positiveContainer = convertStringToColor(hex: positiveContainerColorString)
+    if let positiveContainerColorString = colorScheme["positiveContainer"] as? String,
+       let positiveContainerColor = convertStringToColor(hex: positiveContainerColorString) {
+      customizableColors.positiveContainer = positiveContainerColor
+    }
+    if let avatarPlaceholderColorString = colorScheme["avatarPlaceholder"] as? String {
+      if (avatarPlaceholderColorString == "transparent") {
+        customizableColors.avatarPlaceholder = UIColor.clear
+      } else if let avatarPlaceholderColor = convertStringToColor(hex: avatarPlaceholderColorString) {
+        customizableColors.avatarPlaceholder = avatarPlaceholderColor
+      }
     }
     kitChatCustomization.colorScheme = customizableColors
   }

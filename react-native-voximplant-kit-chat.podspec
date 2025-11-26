@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source_files = 'ios/*'
   s.source       = { :git => "https://github.com/voximplant.git", :tag => "#{s.version}" }
 
-  s.dependency     'VoximplantKitChatUI', '1.3.0'
+  s.dependency     'VoximplantKitChatUI', '1.5.0'
 
   if fabric_enabled
     install_modules_dependencies(s)

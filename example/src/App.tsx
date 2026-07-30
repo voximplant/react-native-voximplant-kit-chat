@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, StyleSheet, TextInput, View } from 'react-native';
 import { KitChat, KitRegion } from '@voximplant/react-native-kit-chat';
-import { Dropdown } from 'react-native-element-dropdown';
+import { Dropdown } from '@carlos3g/element-dropdown';
 
 export default function App() {
   const [region, onChangeRegion] = React.useState(KitRegion.RU);

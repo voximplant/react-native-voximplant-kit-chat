@@ -2,6 +2,7 @@ import UIKit
 import React
 import React_RCTAppDelegate
 import ReactAppDependencyProvider
+import react_native_voximplant_kit_chat
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,11 +24,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     window = UIWindow(frame: UIScreen.main.bounds)
 
-    factory.startReactNative(
-      withModuleName: "VoximplantKitChatExample",
-      in: window,
-      launchOptions: launchOptions
-    )
+    let rootView = factory.rootViewFactory.view(withModuleName: "VoximplantKitChatExample",
+                                                initialProperties: nil,
+                                                launchOptions: launchOptions)
+    let rootViewController = delegate.createRootViewController()
+    let navController = UINavigationController(rootViewController: rootViewController)
+    navController.setNavigationBarHidden(true, animated: false)
+    delegate.setRootView(rootView, toRootViewController: rootViewController)
+    window?.rootViewController = navController
+    window?.makeKeyAndVisible()
+
+    RNVIKitChatImpl.rootViewController = rootViewController
 
     return true
   }

@@ -18,6 +18,7 @@ export default function App() {
     { label: 'BR', value: KitRegion.BR },
     { label: 'EU', value: KitRegion.EU },
     { label: 'KZ', value: KitRegion.KZ },
+    { label: 'MX', value: KitRegion.MX },
   ];
   return (
     <View style={styles.container}>
@@ -30,24 +31,27 @@ export default function App() {
         placeholder="Region"
         placeholderStyle={styles.dropdownPlaceholder}
         selectedTextStyle={styles.dropdownSelectedText}
-        onChange={(item) => {
+        onChange={item => {
           onChangeRegion(item.value);
         }}
       />
       <TextInput
         style={styles.input}
+        placeholderTextColor="#8E8E93"
         onChangeText={onChangeChannelUuid}
         value={channelUuid}
         placeholder="Channel UUID"
       />
       <TextInput
         style={styles.input}
+        placeholderTextColor="#8E8E93"
         onChangeText={onChangeToken}
         value={token}
         placeholder="Token"
       />
       <TextInput
         style={styles.input}
+        placeholderTextColor="#8E8E93"
         onChangeText={onChangeClientId}
         value={clientId}
         placeholder="Client ID"
@@ -69,6 +73,7 @@ const styles = StyleSheet.create({
   container: {
     paddingTop: 40,
     flex: 1,
+    backgroundColor: '#FFFFFF',
   },
   input: {
     height: 40,

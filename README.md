@@ -9,9 +9,14 @@ Supported languages: English, Spanish, Portuguese, Russian.
 
 <img src="https://github.com/voximplant/react-native-voximplant-kit-chat/blob/main/screenshots/chat_screen_android.png" width=200> <img src="https://github.com/voximplant/react-native-voximplant-kit-chat/blob/main/screenshots/chat_screen_ios.png" width=208>
 
-## Supported React Native Versions
+## Requirements
 
-React Native >= 0.74
+| | Version |
+| --- | --- |
+| React Native (SDK) | `>= 0.74` |
+| Example app | React Native `0.86.2` |
+
+The example is a current host app used to develop and demo the SDK. It is not the minimum version required to use the SDK in your product.
 
 ## Getting started
 
@@ -39,9 +44,10 @@ Add `NSCameraUsageDescription` and `NSPhotoLibraryAddUsageDescription` descripti
 ```
 These entries allow the app to access the camera and gallery for sending attachments in the chat.
 
-Modify the `AppDelegate` file to set the rootViewController to the SDK.
+Embed the React Native root in a `UINavigationController` and assign `RNVIKitChatImpl.rootViewController`.
 
-RN 0.80 swift example
+See the 0.80+ Swift example or the 0.74 Objective-C example below. The sample app in `/example` follows the 0.80+ / 0.86 pattern.
+
 ```swift
 import react_native_voximplant_kit_chat
 
@@ -170,7 +176,7 @@ This will override the default icons provided by the SDK during the app build.
 | ic_kit_attachment_preview_document_s.xml | Icon that represents a placeholder for a document attachment in a message         |
 | ic_kit_attachment_preview_media_s.xml    | Icon that represents a placeholder for a media attachment in a message            |
 | ic_kit_avatar_agent_xs.xml               | Icon that represents the agent’s default avatar                                   |
-| ic_kit_avatar_bot_xs.xml                 | Icon that represents the bot’s default avatar                                     |
+| ic_kit_avatar_bot_xs.xml                 | Icon that represents the bot’s avatar                                             |
 | ic_kit_chat_notification_message.xml     | Icon that represents a new message in a notification                              |
 | ic_kit_chat_notification_upload.xml      | Icon that represents the upload in notification                                   |
 | ic_kit_error_xxs.xml                     | Icon that represents the outbound message error state                             |
@@ -196,13 +202,16 @@ kitChat.applyCustomization(customization);
 
 **Strings on Android**
 
-Override the strings in the application resources (<project_dir>/android/app/src/main/res/values) with specified names. 
+Override the strings in the application resources (<project_dir>/android/app/src/main/res/values) with specified names.
 
 | Key                                         | Description                                                                                               |
 |---------------------------------------------|-----------------------------------------------------------------------------------------------------------|
+| kit_action_close                            | Localized string that represents the Close action                                                         |
+| kit_action_open_settings                    | Localized string that represents the action to open the application's system settings                     |
 | kit_attachments_pick_file                   | Localized strings configuration for the document picker action                                            |
 | kit_attachments_pick_media                  | Localized strings configuration for the media picker action                                               |
 | kit_attachments_take_photo                  | Localized strings configuration for the camera picker action                                              |
+| kit_camera_permission_text                  | Localized string that represents the description of the camera access permission                          |
 | kit_chat_title                              | Localized string that represents the chat title                                                           |
 | kit_connection_state_connecting             | Localized string for the connecting state                                                                 |
 | kit_connection_state_offline                | Localized string for the offline state                                                                    |
@@ -225,13 +234,13 @@ Override the strings in the application resources (<project_dir>/android/app/src
 | kit_notification_channel_upload_name        | Localized string that represents the upload notification channel name                                     |
 | kit_notification_new_message_content_text   | Localized string that represents the description text for a new inbound message                           |
 | kit_notification_new_message_title          | Localized string that represents the title text for a new inbound message                                 |
+| kit_notification_upload_progress_title      | Localized plural string for the upload progress title in a notification                                   |
 | kit_placeholder_message                     | Localized string that represents placeholder text for an outbound message                                 |
 | kit_sender_display_name_agent_unnamed       | Localized string for the agent’s default display name                                                     |
-| kit_sender_display_name_bot                 | Localized string for the agent’s default display name                                                     |
+| kit_sender_display_name_bot                 | Localized string for the bot’s display name                                                               |
 | kit_unit_bytes                              | Localized string for the bytes unit                                                                       |
 | kit_unit_kilobytes                          | Localized string for the kilobytes unit                                                                   |
 | kit_unit_megabytes                          | Localized string for the megabytes unit                                                                   |
-| kit_notification_upload_progress_title      | Localized plural string for the upload progress title in a notification                                   |
 
 
 ## License

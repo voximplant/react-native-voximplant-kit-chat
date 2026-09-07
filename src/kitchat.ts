@@ -16,6 +16,7 @@ export enum KitRegion {
   RU = 'RU',
   RU_2 = 'RU_2',
   US = 'US',
+  MX = 'MX',
 }
 
 /**

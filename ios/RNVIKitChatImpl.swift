@@ -437,6 +437,8 @@ import VoximplantKitChatUI
       return VIRegion.ru2
     case "US":
       return VIRegion.us
+    case "MX":
+      return VIRegion.mx
     default:
       return nil
     }

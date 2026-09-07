@@ -28,6 +28,7 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
+*.xcworkspace
 **/.xcode.env.local
 
 # Android/IJ
@@ -40,13 +41,16 @@ project.xcworkspace
 .settings
 local.properties
 android.iml
+**/gradle/gradle-daemon-jvm.properties
 
 # Cocoapods
 #
 example/ios/Pods
+Podfile.lock
 
 # Ruby
 example/vendor/
+Gemfile.lock
 
 # node.js
 #

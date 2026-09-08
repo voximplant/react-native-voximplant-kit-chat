@@ -2,7 +2,7 @@
 
 Sample host for [`@voximplant/react-native-kit-chat`](../README.md). It initializes the SDK, opens the native chat UI, and lets you pick a Kit region.
 
-This app uses React Native 0.86.2. The SDK itself supports React Native `>= 0.74`; see [Requirements](../README.md#requirements) in the root README.
+This app uses React Native 0.86.2. Minimum React Native for the SDK depends on the SDK version; see [Requirements](../README.md#requirements) in the root README.
 
 ## Prerequisites
 

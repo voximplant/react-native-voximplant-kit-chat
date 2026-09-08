@@ -11,12 +11,13 @@ Supported languages: English, Spanish, Portuguese, Russian.
 
 ## Requirements
 
-| | Version |
-| --- | --- |
-| React Native (SDK) | `>= 0.74` |
-| Example app | React Native `0.86.2` |
+| SDK version         | Supported React Native |
+|---------------------|------------------------|
+| 1.0.0 – 1.2.0       | >= 0.74                |
+| 1.3.0 and later     | >= 0.77                |
+| Example app         | 0.86.2                 |
 
-The example is a current host app used to develop and demo the SDK. It is not the minimum version required to use the SDK in your product.
+The example app uses React Native 0.86.2 to develop and demo the SDK. That is not the minimum version required to use the SDK in your product.
 
 ## Getting started
 

@@ -10,14 +10,14 @@ import androidx.core.graphics.toColorInt
 import com.facebook.react.bridge.Promise
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.bridge.ReadableMap
-import com.facebook.react.module.annotations.ReactModule
-import com.voximplant.android.kit.chat.core.exceptions.KitConnectionRequiredException
-import com.voximplant.android.kit.chat.core.exceptions.KitInternalException
-import com.voximplant.android.kit.chat.core.exceptions.KitNetworkException
-import com.voximplant.android.kit.chat.core.exceptions.KitTimeoutException
-import com.voximplant.android.kit.chat.core.model.ClientData
 import com.voximplant.android.kit.chat.ui.KitChatUi
 import com.voximplant.android.kit.chat.ui.KitChatColorScheme
+import com.voximplant.android.kit.chat.ui.exceptions.KitConnectionRequiredException
+import com.voximplant.android.kit.chat.ui.exceptions.KitInternalException
+import com.voximplant.android.kit.chat.ui.exceptions.KitNetworkException
+import com.voximplant.android.kit.chat.ui.exceptions.KitTimeoutException
+import com.voximplant.android.kit.chat.ui.model.ClientData
+import com.voximplant.android.kit.chat.ui.model.Region
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 
@@ -84,6 +84,7 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
                         is IllegalArgumentException -> promise.reject("invalidArgument", exception.message ?: "Some argument(s) are invalid")
                         is KitConnectionRequiredException -> promise.reject("connectionRequired", exception.message ?: "The connection to Voximplant Kit has been closed while processing the operation")
                         is KitTimeoutException -> promise.reject("timeout", exception.message)
+                        is KitNetworkException -> promise.reject("networkIssues", exception.message)
                         is KitInternalException -> promise.reject("internal", exception.message ?: "Something went wrong")
                         else -> promise.reject("unknown", exception.message ?: "Unknown error occurred")
                     }
@@ -109,6 +110,7 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
                         is IllegalArgumentException -> promise.reject("invalidArgument", exception.message ?: "Some argument(s) are invalid")
                         is KitConnectionRequiredException -> promise.reject("connectionRequired", exception.message ?: "The connection to Voximplant Kit has been closed while processing the operation")
                         is KitTimeoutException -> promise.reject("timeout", exception.message)
+                        is KitNetworkException -> promise.reject("networkIssues", exception.message)
                         is KitInternalException -> promise.reject("internal", exception.message)
                         else -> promise.reject("unknown", exception.message ?: "Unknown error occurred")
                     }
@@ -134,6 +136,7 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
                         is IllegalArgumentException -> promise.reject("invalidArgument", exception.message ?: "Some argument(s) are invalid")
                         is KitConnectionRequiredException -> promise.reject("connectionRequired", exception.message ?: "The connection to Voximplant Kit has been closed while processing the operation")
                         is KitTimeoutException -> promise.reject("timeout", exception.message)
+                        is KitNetworkException -> promise.reject("networkIssues", exception.message)
                         is KitInternalException -> promise.reject("internal", exception.message ?: "Something went wrong")
                         else -> promise.reject("unknown", exception.message ?: "Unknown error occurred")
                     }
@@ -177,14 +180,15 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
         }
     }
 
-    private fun convertStringToRegion(string: String): String? {
+    private fun convertStringToRegion(string: String): Region? {
         when (string) {
-            "RU" -> return "ru"
-            "RU_2" -> return "ru2"
-            "BR" -> return "br"
-            "KZ" -> return "kz"
-            "US" -> return "us"
-            "EU" -> return "eu"
+            "RU" -> return Region.RU
+            "RU_2" -> return Region.RU_2
+            "BR" -> return Region.BR
+            "KZ" -> return Region.KZ
+            "US" -> return Region.US
+            "EU" -> return Region.EU
+            "MX" -> return Region.MX
         }
         return null
     }
@@ -192,7 +196,7 @@ class VoximplantKitChatModuleImpl(reactContext: ReactApplicationContext) {
     private fun hexToInt(color: String): Int? {
         return try {
             color.toColorInt()
-        } catch (exception: IllegalArgumentException) {
+        } catch (_: IllegalArgumentException) {
             null
         }
     }
